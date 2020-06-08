@@ -23,7 +23,7 @@ function eopkgUpgrade
 
 function eopkgInstall 
 {
-	package="$( eopkg la | fzf -i -e --multi --no-sort --cycle --ansi \
+	package="$( eopkg la | fzf -i -e --multi --no-sort --cycle --ansi --header-lines=3 \
                         --preview 'eopkg info {1} '\
                         --header="Press TAB to (Un)Select, ENTER to install and  ESC to menu." \
                         --prompt="Search > " | awk '{print $1}'                                                  
