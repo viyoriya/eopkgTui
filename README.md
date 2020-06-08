@@ -13,10 +13,10 @@
   3. Run ./eopkgTUI.sh
 
 
+![alt text](https://github.com/viyoriya/eopkgTui/blob/master/2020-06-08-23-26-17.png "eopkgTUI image 1")
 
 
-
-
+![alt text](https://github.com/viyoriya/eopkgTui/blob/master/2020-06-08-23-27-19.png "eopkgTUI image 2")
 
   
  [Inspired by this script](https://github.com/davidpaulos/XbpsUI) 
