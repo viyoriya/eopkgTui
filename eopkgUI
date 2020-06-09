@@ -1,0 +1,3 @@
+#! /bin/bash
+
+source  ~/Documents/SOLUS/GIT_PROJECTS/eopkgTui/eopkgTUI.sh

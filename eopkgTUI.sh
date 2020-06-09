@@ -76,10 +76,9 @@ function eopkgHistory
                     --prompt="Search > "
 }
 
-function eopkgHelp
+function eopkgSystemCheck
 {
-	eopkg ? | fzf -i --preview 'eopkg {1} --help' --header-lines=4 --cycle \
-                     --header="Press Esc to menu" --prompt="Search  > "
+    sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg it --reinstall
 }
 
 function eopkgDevTools
@@ -87,11 +86,11 @@ function eopkgDevTools
 	sudo eopkg install -c system.devel
 }
 
-function eopkgSystemCheck
+function eopkgHelp
 {
-    sudo eopkg check | grep Broken | awk '{print $4}' | xargs sudo eopkg it --reinstall
+	eopkg ? | fzf -i --preview 'eopkg {1} --help' --header-lines=4 --cycle \
+                     --header="Press Esc to menu" --prompt="Search  > "
 }
-
 
 function eopkgTui
 {
@@ -108,8 +107,8 @@ echo
   │            3   Install package(s) [it]                4   Remove package(s) [rm]              │
   │            5   Delete cache [dc]                      6   Remove orphans [rmo]                │
   │            7   Package details [bl]                   8   Package info [info]                 │
-  │            9   History [hs]                          10   Help [h]                            │
-  │           11   Install dev tool [tools]              12   System Check [ch]                   │
+  │            9   History [hs]                          10   System Check [ch]                   │
+  │           11   Install dev tool [tools]              12   Help [h]                            │
   │                                                                                               │ 
   └───────────────────────────────────────────────────────────────────────────────────────────────┘
     
@@ -121,75 +120,75 @@ echo
     
     case "$choice" in
         1|ur)
-            eopkgUpdate                                                                 
+            eopkgUpdate
             echo
-            echo -e "Repositories updated. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
         2|up)
-            eopkgUpgrade                                                                 
+            eopkgUpgrade 
             echo
-            echo -e "Packages upgraded. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
         3|it)
             eopkgInstall
             echo
-            echo -e "Package(s) installed. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
         4|rm)
             eopkgRemove
             echo
-            echo -e "Package(s) removed. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
-        5|dc )
+        5|dc)
             eopkgDeleteCache
             echo
-            echo -e "Cached packages deleted. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
-        6|rmo )
+       6|rmo)
             eopkgDeleteOrphans
             echo
-            echo -e "Orphan packages deleted. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
-        7|bl )
+        7|bl)
             eopkgBlame
             echo
             echo -e "Press ENTER "
             read
             ;;
-        8|info )
+      8|info)
             eopkgInfo
             echo
             echo -e "Press ENTER "
             read
             ;;
-        9|hs )
+        9|hs)
             eopkgHistory
             echo
             echo -e "Press ENTER "
             read
             ;;
-        10|h )
-            eopkgHelp
+       10|ch)
+            eopkgSystemCheck
             echo
             echo -e "Press ENTER "
             read
             ;;
-       11|tools )
+    11|tools)
             eopkgDevTools
             echo
-            echo -e "Base development tools installed. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
-       12|ch )
-            eopkgSystemCheck
+        12|h)
+            eopkgHelp
             echo
-            echo -e "System check done. Press ENTER "
+            echo -e "Press ENTER "
             read
             ;;
         0|q|Q|quit|$'\e'|$'\e'$'\e' )
