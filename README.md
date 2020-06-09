@@ -4,9 +4,7 @@
 
 ## Pre-request :
 
-    
-    sudo eopkg it fzf
-
+    `sudo eopkg it fzf`
 
   1. Download/clone the repo or copy the script 
   2. Change the file permission (chmod +x eopkgTUI.sh)
